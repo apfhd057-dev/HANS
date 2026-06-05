@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>한스</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+
+    <script src="./js/lenis.min.js"></script>
+    <script src="./js/main.js" defer></script>
+</head>
+<body>
+    <div id="wrap">
+        <header id="header">
+            <div class="header_in">
+                <button class="mobile_menu_btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <nav id="nav">
+                    <ul>
+                        <li>
+                            <a href="#">BRAND</a>
+                            <ul class="sub_menu">
+                                <li><a href="#">브랜드소개</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">MENU</a>
+                            <ul class="sub_menu">
+                                <li><a href="#">CAKE</a></li>
+                                <li><a href="#">SWEET</a></li>
+                                <li><a href="#">DRINK</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">ORDER</a>
+                            <ul class="sub_menu">
+                                <li><a href="#">SPECIAL ORDERS</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">STORE</a>
+                            <ul class="sub_menu">
+                                <li><a href="#">매장안내</a></li>
+                                <li><a href="#">매장찾기</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">NEWS</a>
+                            <ul class="sub_menu">
+                                <li><a href="#">공지사항</a></li>
+                                <li><a href="#">이벤트</a></li>
+                                <li><a href="#">FAQ</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+                <h1 class="logo">
+                    <a href="#"><img src="./images/logo.png" alt=""></a>
+                </h1>
+                <div class="header_actions">
+                    <div class="franchise">창업안내</div>
+                    <div class="insta">INSTAGRAM</div>
+                    <div class="search"><img src="./images/search.png" alt=""></div>
+                </div>
+            </div>
+            <div class="mobile_sitemap">
+                <ul>
+                    <li>
+                        <a href="#">BRAND</a>
+                        <ul>
+                            <li><a href="#">브랜드소개</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">MENU</a>
+                        <ul>
+                            <li><a href="#">CAKE</a></li>
+                            <li><a href="#">SWEET</a></li>
+                            <li><a href="#">DRINK</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">ORDER</a>
+                        <ul>
+                            <li><a href="#">SPECIAL ORDERS</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">STORE</a>
+                        <ul>
+                            <li><a href="#">매장안내</a></li>
+                            <li><a href="#">매장찾기</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">NEWS</a>
+                        <ul>
+                            <li><a href="#">공지사항</a></li>
+                            <li><a href="#">이벤트</a></li>
+                            <li><a href="#">FAQ</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <main id="main">
+            <div class="main_slider">
+                <div class="main_slide active">
+                    <img src="./images/main_img.png" alt="">
+                </div>
+                <div class="main_slide">
+                    <img src="./images/main_img2.png" alt="">
+                </div>
+            </div>
+
+            <button class="main_btn main_prev"></button>
+            <button class="main_btn main_next"></button>
+
+            <div class="main_pagination">
+            </div>
+        </main>
+        <section id="contents">
+            <article id="menu">
+                <h3 class="menu_motion motion_1">MENU</h3>
+
+                <ul class="menu_category menu_motion motion_2">
+                    <li class="active"><a href="#">cake</a></li>
+                    <li><a href="#">sweet</a></li>
+                    <li><a href="#">drink</a></li>
+                </ul>
+
+                <div class="menu_slide_wrap menu_motion motion_3">
+                    <button class="slide_btn prev">&lt;</button>
+
+                    <div class="menu_slide">
+                        <div class="slide_item side left">
+                            <img src="./images/cake.png" alt="케이크1">
+                        </div>
+                        <div class="slide_item side left">
+                            <img src="./images/cake.png" alt="케이크1">
+                        </div>
+
+                        <div class="slide_item active">
+                            <div class="cake_img">
+                                <img src="./images/cake.png" alt="초코 딸기 생크림">
+                            </div>
+                            <div class="cake_text">
+                                <span>부드러운 딸기 생크림</span>
+                                <h4>초코 딸기 생크림</h4>
+                                <p>
+                                    촉촉한 초코 시트 위에 흐르는 고소한 커스터드와
+                                    신선한 제철 딸기, 부드러운 크림이 어우러진 만족스러운 케이크
+                                </p>
+                                <a href="#">MORE</a>
+                            </div>
+                        </div>
+
+                        <div class="slide_item side right">
+                            <img src="./images/cake.png" alt="케이크3">
+                        </div>
+                        <div class="slide_item side right">
+                            <img src="./images/cake.png" alt="케이크1">
+                        </div>
+                    </div>
+
+                    <button class="slide_btn next">&gt;</button>
+                </div>
+
+                <div class="pagination">
+                    <span class="on"></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </article>
+            <section id="brand_story">
+                <div class="story_inner">
+
+                    <div class="story_left">
+                        <div class="img_box img1">
+                            <img src="./images/Rectangle 68.png" alt="딸기 이미지">
+                        </div>
+
+                        <div class="img_box img2">
+                            <img src="./images/Rectangle 69.png" alt="케이크 이미지">
+                        </div>
+                    </div>
+
+                    <div class="story_right">
+                        <span class="sub_tit">Brand’s Story</span>
+                        <h3 class="story_fill_title">
+                            <span class="fill_line">
+                                <span class="base">정직한 재료로 완성하는</span>
+                                <span class="cover black">정직한 재료로 완성하는</span>
+                            </span>
+
+                            <span class="fill_line">
+                                <span class="base">한 조각의 특별함</span>
+                                <span class="cover green">한 조각의 특별함</span>
+                            </span>
+                        </h3>
+
+                        <p>
+                            한스케이크는 좋은 재료를 아끼지 않고,<br>
+                            기본에 충실한 <b>정직한 베이킹</b>을 추구합니다.
+                        </p>
+
+                        <p>
+                            부드러운 식감과 과하지 않은 달콤함,<br>
+                            <b>누구나 편안하게 즐길 수 있는 맛</b>을 위해 오늘도 정성을 다해 준비합니다.
+                        </p>
+                    </div>
+
+                </div>
+                <div class="circle_text_img">
+                        <img src="./images/sweet cake sweet cakesweet cakesweet cake sweet cake sweet cake sweet cake sweet cake sweet cake sweet cake.png" alt="원형 텍스트">
+                </div>
+        </section>
+        <article id="order">
+            <div class="order_bg"></div>
+            <div class="deco_top">
+                <img src="./images/크크 1.png" alt="케이크 장식">
+            </div>
+            <div class="order_text">
+                <span>Special Moment Cake</span>
+                <h2>당신만을 위한 특별한 케이크</h2>
+                <p>정교한 디테일과 엄선된 재료로 완성하는 하이엔드 커스텀,<br>
+                    당신의 상상을 가장 맛있는 현실로 구현합니다.</p>
+                <a href="#">MORE</a>
+            </div>
+        </article>
+        <article id="search_store">
+            <div class="search_store_left">
+                <span class="store_motion store_m1">Search Store</span>
+                <h2 class="store_motion store_m2"><strong>가까운 매장</strong>에서<br>
+                    만나보세요</h2>
+                <p class="store_motion store_m3">웨딩, 생일, 기념일 등<br>
+                    특별한 순간을 위한 한스의 케이크를 가까운 매장에서 만나보세요.<br><br>
+                    <b>카카오톡 채널 추가 시</b> 다양한 이벤트와 소식을 받아보실 수 있습니다.</p>
+               <form class="search_loaction store_search_motion">
+                    <input type="text" placeholder="지역을 입력해주세요">
+                    <button type="submit">
+                        <img src="./images/search_gray.png" alt="검색">
+                    </button>
+                </form>
+            </div>
+            <div class="search_store_right">
+                <div class="phone_img">
+                    <img src="./images/kakao_img.png" alt="">
+                </div>
+                <span class="tag tag1">#기념일케이크</span>
+                <span class="tag tag2">#웨딩케이크</span>
+                <span class="tag tag3">#키팅밀케이크</span>
+                <span class="tag tag4">#프리미엄_오더</span>
+            </div>
+        </article>
+        <article id="board_menu">
+            <div class="border_menu_inner">
+                <div class="board_menu_left board_motion_left">
+                    <div class="event">
+                        <h4>EVENT</h4>
+                        <p>[매장] 41호점 마곡점 오픈</p>
+                        <button>
+                            <img src="./images/arrow_right.png" alt="">
+                        </button>
+                    </div>
+                    <div class="faq">
+                        <h4>FAQ</h4>
+                        <p>HANS의 궁금하신 부분을 안내드립니다.</p>
+                        <button>
+                            <img src="./images/arrow_right.png" alt="">
+                        </button>
+                    </div>
+                </div>
+                <div class="board_menu_right board_motion_right">
+                    <div class="notice">
+                        <div class="notice_title">
+                            <h4>NOTICE</h4>
+                            <p>한스케익의 다양한 소식들을 만나보세요</p>
+                        </div>
+                        <div class="notice_icon">
+                            +
+                        </div>
+                    </div>
+                    <ul class="notice_list">
+                        <li><a href="">[매장] 42호점 옥수점 오픈<span>2026.04.10</span></a></li>
+                        <li><a href="">[매장] 41호점 마곡점 오픈<span>2026.04.10</span></a></li>
+                        <li><a href="">[매장] 40호점 용산센트럴파크점 오픈<span>2026.04.10</span></a></li>
+                        <li><a href="">[매장] HANS 포인트 안내 [2022.01.01]<span>2026.04.10</span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+        </section>
+        <footer id="footer">
+            <div class="footer_inner">
+                <div class="footer_top">
+                    <ul class="footer_policy">
+                        <li><a href="">개인정보처리방침</a></li>
+                        <li><a href="">이용약관</a></li>
+                        <li><a href="">이메일무단수집거부</a></li>
+                        <li><a href="">사이트맵</a></li>
+                    </ul>
+                    <div class="footer_sns">
+                        <img src="./images/footer_kakao.png" alt="">
+                        <img src="./images/footer_insta.png" alt="">
+                    </div>
+                </div>
+                <hr>
+                <div class="footer_bottom">
+                    <div class="footer_logo">
+                        <img src="./images/footer_logo.png" alt="">
+                    </div>
+                    <address>경기 안양시 동안구 시민대로 401 대륭테크노타운 15차 B111호 (관양2동 224-5) ㈜한스제과<br>
+                        고객센터 015-8504-3505<br>
+                        사업자등록번호 214-88-63183 / 통신판매업신고 제2013-경기안양-0039호 / 대표이사 안영식, 한성훈, 안주태<br><br>
+                        Copyright 2011© HANS CAKE. All Right Reserved</address>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
