@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul,li{
+            list-style: none;
+        }
+        a{text-decoration: none;}
+
+        .nav{margin: 100px;}
+        .nav > li{
+            float: left;
+            width: 150px;
+            height: 30px;
+            position: relative;
+        }
+        .nav > li > a{
+            font-size: 16px;
+            display: block;
+            width: 100%;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            background-color: rgb(80, 80, 80);
+            color: #fff;
+            transition: all 0.7s;
+        }
+        .nav > li > a.over{
+            background-color: hsl(0, 0%, 53%);
+            color:#000000;
+        }
+        .nav .sub{
+            position: absolute;
+            top:30px; left: 0;
+            width: 100%;
+            display: none;/*기본 숨김 설정*/
+        }
+        
+        .nav .sub li{
+            width: 100%;
+            height: 30px;
+            border-bottom: 1px solid #ccc;
+        } 
+        .nav .sub a{
+            display: block;
+            background-color: rgb(184, 184, 184);
+            text-align: center;
+            line-height: 30px;
+        }
+        .nav .sub a.on{
+            background-color: rgb(84, 84, 84); 
+            color: #fff;
+        }
+    </style>
+    <script>
+        window.addEventListener('load',()=>{
+        //ul.nav
+        const nav = document.querySelector('.nav');//object:한개 존재
+        //ul.nav > li
+        const navLi = document.querySelectorAll('.nav > li');//list 여러개(목록);  
+        //ul.nav > li > a
+        let link;
+        //ul.nav > li > ul.sub
+        let sub;
+    
+        for(let i = 0; i < navLi.length; i++){//navLi개수가 4개이므로 반복실행문 4번 수행
+            //i: 0 1 2 3 
+            navLi[i].addEventListener('mouseenter',(e)=>{
+                 link = e.target.children[0];//a
+                 sub = e.target.children[1];//ul.sub
+
+                 //스타일시트로 지정
+                 link.classList.add('over');
+
+                 //자바스크립에서 스타일을 지정
+                 sub.style.display='block';
+
+                 //sub li a에 대한 효과
+                 //console.log(sub.children[0].children)
+                 for(let j = 0; j < sub.children.length; j++){ //ul.sub > li 개수만큼 반복
+                    sub.children[j].addEventListener('mouseenter',(e)=>{
+                         subA = e.target.children[0] 
+                         subA.classList.add('on');
+
+                     }) 
+
+                    sub.children[j].addEventListener('mouseleave',(e)=>{
+                         subA = e.target.children[0] 
+                         subA.classList.remove('on');
+
+                     }) 
+                 } 
+              
+            });
+
+            navLi[i].addEventListener('mouseleave',(e)=>{
+                 link = e.target.children[0];//a
+                 sub = e.target.children[1];//ul.sub
+
+                 //스타일시트로 지정
+                 link.classList.remove('over');
+
+                 //자바스크립에서 스타일을 지정
+                 sub.style.display='none';
+            });
+        }
+        //서브메뉴 마우스 올렸을때 효과
+            
+        });
+    </script>
+</head>
+<body>
+    <ul class="nav">
+        <li>
+            <a href="">menu1</a>
+            <ul class="sub">
+                <li><a href="">sub1</a></li>
+                <li><a href="">sub2</a></li>
+                <li><a href="">sub3</a></li>
+                <li><a href="">sub4</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="">menu2</a>
+            <ul class="sub">
+                <li><a href="">sub1</a></li>
+                <li><a href="">sub2</a></li>
+                <li><a href="">sub3</a></li>
+                <li><a href="">sub4</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="">menu3</a>
+            <ul class="sub">
+                <li><a href="">sub1</a></li>
+                <li><a href="">sub2</a></li>
+                <li><a href="">sub3</a></li>
+                <li><a href="">sub4</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="">menu4</a>
+            <ul class="sub">
+                <li><a href="">sub1</a></li>
+                <li><a href="">sub2</a></li>
+                <li><a href="">sub3</a></li>
+                <li><a href="">sub4</a></li>
+            </ul>
+        </li>
+    </ul>
+
+</body>
+</html>

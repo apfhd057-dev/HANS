@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            width: 100%;
+            margin-top: 35px;
+        }
+        .ball{
+            width: 50px;
+            height: 50px;
+            background-color: aqua;
+            border-radius: 50%;
+        }
+    </style>
+    <script>
+        'use strict';
+        window.addEventListener('load',function(){
+           let num=0;//위치이동하는 값을 저장하는 변수
+           let currentx=0;//현재위치값을 저장하는변수
+           let targetx=0;//목표위치값을 저장하는 변수
+           let moving=false;//움직이는 상태를 저장하는 변수
+
+           const body=document.body;
+           const ball=document.getElementById('ball'); 
+
+           body.addEventListener("wheel",function(e){
+                  //console.log('wheel event')
+                  //console.log(e);
+                  if(moving) return;
+                  //움직이는 애니메이션 상태이면 프로그램정지
+
+                  let delta = e.wheelDeltaY;
+                  //console.log("delta:"+delta);
+
+                  if(delta>0){//up
+                       if(num > 0){
+                          num = num - 1;
+                       }     
+                  }else{//down
+                    if(num < 20){
+                      num = num + 1;
+                    }
+                  }
+
+                  //움직임 시작
+                  moving=true;
+                  targetx = 100*num;
+                  targetx = 100*num;
+                  //console.log("num:"+num+", currentx:"+currentx+", targetx:"+targetx);
+                  
+                let aniTimer = setInterval(()=>{
+                    if(targetx > currentx){//목적위치가 현재위치보다 클때
+                            // (100 - 95) > 5
+                            //    5   > 5
+                            // currentx:0....95    
+                            if(Math.abs(targetx-currentx) > 5){
+                               currentx= currentx + 5
+                            }else{
+                                currentx = targetx;
+                                clearInterval(aniTimer);
+                                moving=false;
+                            }
+                               
+                    }else{
+                            if(Math.abs(targetx-currentx) > 5){
+                               currentx= currentx - 5
+                            }else{
+                                currentx = targetx;
+                                clearInterval(aniTimer);
+                                moving=false;
+                            }
+                    }
+                    ball.style.marginLeft=currentx+"px";
+                                     //5 10 15 ...... 100
+                  },5)
+                  
+                  
+           });
+
+           body.addEventListener('keydown',(e)=>{
+                //console.log("e.keyCode : "+e.keyCode);
+
+                if(moving) return;
+                  //움직이는 애니메이션 상태이면 프로그램정지
+
+                //키보드 지정
+                if(e.keyCode == 38){
+                    //up
+                    if(num > 0){
+                        num-=1;
+                    }
+                }  
+                if(e.keyCode == 40){
+                    //down
+                     if(num < 20){
+                        num+=1;
+                    }
+                } 
+                //console.log("num"+num);
+                moving=true;
+                targetx=100*num;
+
+                let setIntervalId = setInterval(()=>{
+                         if(targetx > currentx){ 
+                              if(Math.abs(targetx - currentx) > 5){
+                                currentx = currentx + 5; // 0 5 10 15 .....100
+                              }else{
+                                currentx = targetx;
+                                clearInterval(setIntervalId)
+                                moving = false;
+                              }
+                                
+                         }else{
+                               if(Math.abs(targetx - currentx) > 5){
+                               currentx = currentx - 5;
+                               }else{
+                                currentx=targetx;
+                                clearInterval(setIntervalId);
+                                moving=false;
+                               }
+                         }
+
+                         ball.style.marginLeft = currentx + 'px';
+                },5);
+           });
+
+
+
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="ball" id="ball"></div>
+    </div>
+</body>
+</html>

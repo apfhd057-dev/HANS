@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>basic :: JavaScript example</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic">
+<style>
+body {
+	margin: 20px;
+	padding: 20px;
+	line-height: 1;
+	font-family: "Open Sans", sans-serif;
+	font-size: 1em;
+	background-color: #f1f1f1;
+	color: #555;
+}
+ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.title {
+	margin: 0;
+	margin-bottom: 35px;
+	padding: 0;
+	font-size: 1.5em;
+	font-weight: 300;
+	color: #555;
+}
+.container {
+	margin-top: 35px;
+	min-width: 440px;
+}
+.controller {
+	padding-top: 20px;
+}
+.controller li {
+	display: inline-block;
+	margin-left: 8px;
+}
+.controller li:first-child {
+	margin-left: 0;
+}
+.controller li a {
+	display: block;
+	width: 20px;
+	height: 20px;
+	background-color: #fff;
+	border-radius: 10px;
+	transition: all 0.3s;
+}
+.controller li.on a {
+	width: 50px;
+	background-color: #8ac007;
+}
+.picture {
+	position: relative;
+	margin-top: 30px;
+	width: 400px;
+	height: 400px;
+	overflow: hidden;
+}
+.picture ul {
+	position: absolute;
+	left: 0;
+	top: 0;
+	margin: 0;
+	padding: 0;
+	width: 2400px;
+	list-style: none;
+	transition: left 0.4s;
+}
+.picture li {
+	float: left;
+	width: 400px;
+	height: 400px;
+}
+.picture img {
+	max-width: 100%;
+	height: auto;
+}
+</style>
+<script>
+ window.addEventListener('load',()=>{
+   const container = document.getElementsByClassName('container')[0]; //div.container
+   const controller = container.children[0];//div.container > ul 객체방식
+   const liList = controller.children ////div.container > ul > li 리스트방식
+   
+   const picture = document.getElementsByClassName('picture')[0];
+   const pictureUl = picture.children[0];
+
+   let n=0; //버튼에 인덱스값이 저장되는 공간
+   let targetx = 0;//클릭할때마다 이동한 거리
+
+
+   for(let i=0; i < liList.length; i++){
+	 liList[i].index = i;//0 1 2 3 4 5 반복문안에 인자를 인덱스로 사용할려면 미리 선언해야함
+     liList[i].addEventListener('click',(e)=>{
+        e.preventDefault();
+		n = e.currentTarget.index;//현재 이벤트가 적용된 liList 인덱스값
+        targetx = n * 400 * (-1);
+		pictureUl.style.left= targetx + "px";
+     });
+   }  
+   
+
+ });
+</script>
+</head>
+
+<body>
+
+<div class="container">
+	<ul class="controller">
+		<li class="on"><a href=""></a></li>
+		<li><a href=""></a></li>
+		<li><a href=""></a></li>
+		<li><a href=""></a></li>
+		<li><a href=""></a></li>
+		<li><a href=""></a></li>
+	</ul>
+	<div class="picture">
+		<ul>
+			<li><img src="images/work1.jpg" alt=""></li>
+			<li><img src="images/work2.jpg" alt=""></li>
+			<li><img src="images/work3.jpg" alt=""></li>
+			<li><img src="images/work4.jpg" alt=""></li>
+			<li><img src="images/work5.jpg" alt=""></li>
+			<li><img src="images/work6.jpg" alt=""></li>
+		</ul>
+	</div>
+</div>
+</body>
+</html>

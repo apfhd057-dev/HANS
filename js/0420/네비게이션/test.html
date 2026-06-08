@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            list-style: none;
+        }
+
+         /*nav02*/
+        #nav01{
+            width: 150px;
+            /* height: auto; */
+            border: 1px solid #ccc;
+        }
+        #nav01 > a{
+            display: block;
+            width: 100%;
+            height: 30px;
+            background-color: aquamarine;
+            text-align: center;
+            line-height: 30px;
+        }
+        #nav01 .sub{
+            width: 100%;
+            display: none;
+        }
+        #nav01 .sub li{
+            height: 30px;
+        }
+        #nav01 .sub a{
+            display: block;
+            width: 100%;
+            height: 30px;
+            background-color: rgb(141, 192, 175);
+            text-align: center;
+            line-height: 30px;
+        }
+
+
+
+        /*nav02*/
+        #nav02{
+            margin-top: 150px;
+            width: 150px;
+            /* height: auto; */
+            border: 1px solid #ccc;
+        }
+        #nav02 li> a{
+            display: block;
+            width: 100%;
+            height: 30px;
+            background-color: aquamarine;
+            text-align: center;
+            line-height: 30px;
+        }
+        #nav02 .sub{
+            width: 100%;
+            display: none;
+        }
+        #nav02 .sub li{
+            width: 100%;
+            height: 30px;
+        }
+        #nav02 .sub a{
+            display: block;
+            width: 100%;
+            height: 30px;
+            background-color: rgb(141, 192, 175);
+            text-align: center;
+            line-height: 30px;
+        }
+
+    </style>
+    <script>
+      window.addEventListener('load',()=>{
+  
+        //1객체를 선택할때 사용하는 함수
+        //반복문 사용 안한다
+        document.querySelector('대상');
+        document.getElementById('대상');
+         
+        //1개상으 객체를 선택할때 사용하는 함수
+        //반드시 반복문 사용해야 안에 있는 이벤트를 인식
+        document.querySelectorAll('대상')
+        document.getElementsByClassName('대상')
+        document.getElementsByTagName('대상')
+
+        document.getElementById('대상').classList.add('클래스'); // 클래스를 적용
+        document.getElementById('대상').classList.remove('클래스'); // 클래스를 미적용
+        document.getElementById('대상').classList.toggle('클래스'); 
+        //클래스를 적용이면 미적용 상태로 또는 미적용이면 적용으로 상태를 변경
+
+        //자바스크립트에서 스타일을 직접 적용
+        document.getElementById('대상').style.스타일속성명1 = '속성값1'
+        document.getElementById('대상').style.스타일속성명2 = '속성값2'
+
+        //nextElementSibling 바로 다음 형제 요소
+        //previousElementSibling 바로 이전 형제 요소
+        //parentElement 현재 노드의 부모 요소
+        //children 현재 요소의 모든 자식 요소
+        //firstElementChild 현재 요소의 첫 번째 자식 요소
+        //lastElementChild 현재 요소의 마지막 자식 요소
+
+
+
+
+        //nav01
+        const nav01 = document.querySelector('#nav01');
+        //console.log(typeof(nav01));
+        nav01.addEventListener('click',(e)=>{
+            e.preventDefault();
+            e.currentTarget.children[1].style.display="block";
+        });
+        nav01.addEventListener('mouseout',(e)=>{
+            e.preventDefault();
+            e.currentTarget.children[1].style.display="none";
+        })
+
+
+
+        //nav02
+        const nav02Li = document.querySelectorAll('#nav02 > li')
+        console.log("nav02Li:" + typeof(nav02Li));
+
+        for(let i=0; i < nav02Li.length; i++){
+            nav02Li[i].addEventListener('click',(e)=>{
+                e.preventDefault();
+                e.currentTarget.children[1].style.display="block";
+            });
+           
+        }    
+      });
+      
+
+
+    </script>
+</head>
+<body>
+    <div id="nav01">
+        <a href="">main01</a>
+        <ul class="sub">
+            <li><a href="">sub1</a></li>
+            <li><a href="">sub2</a></li>
+            <li><a href="">sub3</a></li>
+            <li><a href="">sub4</a></li>
+        </ul>
+    </div>
+
+    <ul id="nav02">
+        <li>
+            <a href="">main01-1</a>
+            <ul class="sub">
+                <li><a href="">sub1</a></li>
+                <li><a href="">sub2</a></li>
+                <li><a href="">sub3</a></li>
+                <li><a href="">sub4</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="">main01-2</a>
+            <ul class="sub">
+                <li><a href="">sub1</a></li>
+                <li><a href="">sub2</a></li>
+                <li><a href="">sub3</a></li>
+                <li><a href="">sub4</a></li>
+            </ul>
+        </li>
+    </ul>
+</body>
+</html>

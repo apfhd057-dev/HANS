@@ -1,0 +1,381 @@
+
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul,li{
+            list-style: none;
+        }
+        a{text-decoration: none;}
+
+
+
+        #wrap{
+             width: 100%;
+            }
+        #header{
+            width: 100%;
+            height: 120px;
+            background-color: aquamarine;
+        }
+        #header_in{
+            margin: 0 auto;
+            width: 1500px;
+            height: 120px;
+            background-color: rgb(63, 167, 132);
+            display: flex;
+            justify-content: space-between;
+        }
+        #header_in .logo{
+            width: 120px;
+            height: 120px;
+            text-align: center;
+            line-height: 120px;
+            background-color: cadetblue;
+        }
+        #header_in .nav{
+            width: 1000px;
+            height: 120px;
+        }
+        #header_in .nav > ul{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+             height: 120px;
+        }
+        #header_in .nav > ul > li{
+            width: 150px;
+            height: 40px;
+            border: 1px solid #ccc;
+            position: relative;
+            
+        }
+        #header_in .nav > ul > li >a {
+            display: block;
+            width: 150px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            transition: all 0.7s;
+        }
+        
+        #header_in .nav > ul > li >a.over{
+            background-color: black;
+            color: #fff;
+        }
+         #header_in .nav .sub{
+           position: absolute;
+           top:40px;
+           left: 0px;
+           z-index: 1000;
+           width: 150px;
+           display: none;
+         } 
+         #header_in .nav .sub li{
+            width: 100%;
+            height: 30px;
+            border-bottom: 1px solid #ccc;
+         }
+         #header_in .nav .sub a{
+            display: block;
+            width: 100%;
+            height: 30px;
+            background-color: azure;
+            text-align: center;
+            line-height: 30px;
+         }
+         #header_in .nav .sub li.on a{
+            background-color: rgb(109, 109, 109);
+            color: #fff;
+         }
+        
+        #main_img{
+            width: 100%;
+            height: 700px;
+            background-color: rgb(194, 224, 18);
+            position: relative;
+        }
+
+        #main_img .viewarea{
+            width: 100%;
+            height: 700px;
+            position: relative;
+        }
+
+        #main_img .viewarea ul li{
+            width: 100%;
+            height: 700px;
+            position: absolute;
+            opacity: 0;
+            transition: all 1s;
+            
+        }
+        #main_img .viewarea ul li.act{
+            opacity: 1;
+            
+        }
+        #main_img .viewarea ul li:nth-child(1){
+            background-color: springgreen;
+            z-index: 500;
+        }
+        #main_img .viewarea ul li:nth-child(2){
+            background-color: greenyellow;
+            z-index: 400;
+        }
+        #main_img .viewarea ul li:nth-child(3){
+            background-color: honeydew;
+            z-index: 300;
+        }
+        #main_img .viewarea ul li:nth-child(4){
+            background-color: darkcyan;
+            z-index: 200;
+        }
+        #main_img .viewarea ul li:nth-child(5){
+            background-color: lime;
+            z-index: 100;
+        }
+
+        #main_img .btns{
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            /* margin-left: -72px; */
+            /* 포지션 left : 50%해서 가운데 정렬할때는 기준이 왼쪽이다보니 오른쪽으로 좀 더 간 상태가 된다 
+            그래서 현재 가로값 반값인 - 72px를 줘서 다시 왼쪽으로 이동한다 */
+            z-index: 600;
+
+        }
+        #main_img .btns li{
+            float: left;
+            margin-right: 16px;
+            width: 16px;
+            height: 16px;
+            border-radius: 8px;
+            overflow: hidden;
+            
+        }
+        #main_img .btns li a{
+            display: block;
+            width: 16px;
+            height: 16px;
+            background-color: #ccc;
+            
+        }
+        #main_img .btns li.on a{
+            background-color: darkturquoise;
+        }
+
+        #contents{
+            width: 100%;
+            height: 2000px;
+            background-color: rgb(42, 174, 214);
+        }
+        #contents .tabs{
+            margin: 0 auto;
+            width: 1500px;
+            height: 400px;
+            background-color: honeydew;
+            padding: 5px 0 0 5px;
+            box-sizing: border-box;
+            position: relative;
+        }
+        #contents .tabs ul{
+            display: flex;
+            justify-content: space-between;
+            width: 610px;
+        }
+         #contents .tabs ul > li{
+            width: 120px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            font-size: 16px;
+            color: #fff;
+            background-color: black;
+            cursor: pointer;
+            
+        }
+        #contents .tabs ul > li.on{
+            background-color: blue;
+        }
+        #contents .tabs div{
+            width: 1500px;
+            height: 370px;
+            position: absolute;
+            top: 30px;
+            left: 0px;
+            display: none;
+        }
+
+        #contents .tabs div.box1{
+            background-color: pink;
+            display: block;
+        }
+
+        #contents .tabs div.box2{
+            background-color: chartreuse;
+        }
+
+        #contents .tabs div.box3{
+            background-color: darkslategrey;
+        }
+
+        #contents .tabs div.box4{
+            background-color: dimgray;
+        }
+
+        #contents .tabs div.box5{
+            background-color: indigo;
+        }
+
+        #contents .tabs h3{
+            font-size: 100px;
+            color: #fff;
+        }
+
+        #contents .gallery{
+            margin: 0 auto;
+            margin-top: 40px;
+            width: 1500px;
+            height: 400px;
+            background-color: yellow;
+            
+        }
+        #contents .gallery .g_header{
+            float: left;
+            width: 480px;
+            height: 400px;
+            background-color: antiquewhite;
+        }
+        #contents .gallery .g_header ul{
+            width: 100%;
+
+        }
+        #contents .gallery .g_header li{
+            width: 100%;
+            height: 65px;
+            text-align: center;
+            line-height: 65px;
+            margin-bottom: 2px;
+            background-color: black;
+            color: #fff;
+            cursor: pointer;
+            
+        }
+        #contents .gallery .g_header li.on{
+            background-color: #ccc;
+            color: black;
+        }
+
+        #contents .gallery .g_body{
+            float: right;
+            width: 1000px;
+            height: 400px;
+            background-color: blue;
+            position: relative;
+            overflow: hidden;
+        }
+        #contents .gallery .g_body ul{
+            position: absolute;
+            top: 0;left: 0;
+            width: 6000px;
+            transition: all 1s;
+
+        }
+        #contents .gallery .g_body li{
+            width: 1000px;
+            height: 400px;
+            float: left;
+            font-size: 200px;
+            color: #fff;
+        }
+        #contents .gallery .g_body li:nth-child(1){
+            background-color: darkmagenta;
+        }
+        #contents .gallery .g_body li:nth-child(2){
+            background-color: dodgerblue;
+        }
+        #contents .gallery .g_body li:nth-child(3){
+            background-color: darkseagreen;
+        }
+        #contents .gallery .g_body li:nth-child(4){
+            background-color: khaki;
+        }
+        #contents .gallery .g_body li:nth-child(5){
+            background-color: orchid;
+        }
+        #contents .gallery .g_body li:nth-child(6){
+            background-color: gold;
+        }
+        
+        #contents .scroll_ani{
+            margin: 0 auto;
+            margin-top: 40px;
+            width: 1500px;
+            height: 300px;
+            background-color: oldlace;
+            position: relative;
+        }
+
+        #contents .scroll_ani .box_l{
+            float: left;
+            width: 300px;
+            height: 300px;
+            background-color: mediumorchid;
+            transition: all 0.7s;
+
+        }
+        #contents .scroll_ani .box_l.on{
+            width: 1000px;
+
+        }
+        #contents .scroll_ani .box_r.on{
+            position: absolute;
+            top: 0;
+            right: 200px;
+            transform: rotate(360deg);
+        }
+        
+        
+        #contents .scroll_ani .box_r{
+            float: right;
+            width: 300px;
+            height: 300px;
+            background-color: mediumslateblue;
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 100;
+            transform: rotate(0deg);
+            transition: all 0.7s;
+
+        }
+
+
+        #footer{
+            width: 100%;
+            height: 150px;
+            background-color: aquamarine;
+        }
+
+        /* 팝업창 */
+        #popup{
+            position: absolute;
+            top: 200px;
+            left: 300px;
+            z-index: 9999;
+            width: 250px;
+            height: 350px;
+            background-color: #fff;
+        }
+        #q_menu{
+            width: 120px;
+            height: 300px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            position: absolute;
+            top: 250px;
+            right: 10px;
+            z-index: 9999;
+        }

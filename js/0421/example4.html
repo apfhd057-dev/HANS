@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>basic :: JavaScript example</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic">
+<style>
+body {
+	margin: 20px;
+	padding: 20px;
+	line-height: 1;
+	font-family: "Open Sans", sans-serif;
+	font-size: 1em;
+	background-color: #f1f1f1;
+	color: #555;
+}
+ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.container {
+	margin-top: 35px;
+	min-width: 440px;
+}
+nav ul {
+	margin: 16px 0 16px 0;
+	padding: 8px 0;
+	text-align: left;
+	font-weight: 400;
+	border-bottom: 1px solid #d4d4d4;
+}
+nav ul li {
+	display: inline;
+}
+nav ul li a {
+	margin-right: 0;
+	padding: 10px 20px 10px;
+	text-decoration: none;
+	font-size: 0.87rem;
+	background-color: #f1f1f1;
+	color: #333;
+	border: 1px solid #d4d4d4;
+	border-bottom: none;
+	transition: all 0.4s;
+}
+nav ul li.on a {
+	background-color: #8ac007;
+	color: #fff;
+	border-color: #8ac007
+}
+.description {
+	display: none;
+	margin: 30px 0;
+	padding: 30px 0;
+	font-size: 0.875em;
+	color: #333;
+	border-bottom: 4px solid #d4d4d4;
+}
+.description.active {
+	display: block;
+}
+</style>
+<script>
+	window.addEventListener('load', ()=>{
+        let n = 0; //버튼 번호값(인덱스)
+		const container = document.getElementsByClassName("container")[0];
+	    let infoArray = [];//배열선언 //div.container > div.description
+		let nav;//div.container > nav
+		let info;
+
+		for(let i = 0; i < container.children.length; i++) {//0, 1
+				if (container.children[i].tagName == "NAV") {
+					nav = container.children[i];//nav
+				}
+				else {
+					info = container.children[i];//div
+				}
+		}
+        //console.log(nav);
+        
+		const navLi = nav.children[0].children; // nav > ul > li
+        for(let j=0; j < 4;j++){
+          infoArray.push(info.children[j]);
+		}
+        navLi[n].classList.add('on');//초기값 0번버튼에 효과 적용
+		infoArray[n].classList.add('active');//초기값 0번 콘텐츠박스에 효과 적용
+        //console.log(infoArray); 
+
+		for(let k=0; k < navLi.length; k++){
+            navLi[k].index = k;//li의인덱스값을 반복문 i값을 대입
+
+			navLi[k].addEventListener('click', (e)=>{
+             e.preventDefault();
+			 n=e.currentTarget.index;
+			 console.log(n)
+
+			for (let l = 0; l < navLi.length; l++) {
+						if (l == n) {
+							navLi[l].classList.add("on");
+							infoArray[l].classList.add("active");
+						}
+						else {
+							navLi[l].classList.remove("on");
+							infoArray[l].classList.remove("active");
+						}
+			}
+
+			})
+		}
+        
+
+	});
+</script>
+</head>
+
+<body>
+
+<div class="container">
+	<nav>
+		<ul>
+			<li class="tab1"><a href="">HTML</a></li>
+			<li class="tab2"><a href="">CSS</a></li>
+			<li class="tab3"><a href="">JavaScript</a></li>
+			<li class="tab4"><a href="">jQuery</a></li>
+		</ul>
+	</nav>
+	<div class="description_group">
+		<div class="description HTML">subject : HTML</div>
+		<div class="description CSS">subject : CSS</div>
+		<div class="description JavaScript">subject : JavaScript</div>
+		<div class="description jQuery">subject : jQuery</div>
+	</div>
+</div>
+</body>
+</html>

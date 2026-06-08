@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/nav.js"></script>
+    <script src="./js/mainslide.js"></script>
+    
+
+    <script>
+        window.addEventListener('load',()=>{
+    const tabs = document.getElementById('tabs');
+    const tabsUl = tabs.children[0];
+    const tabsLi = tabsUl.children;
+    let n = 0;
+    let divList = [];
+
+    // div만 한 번만 담기
+    for(let j=0; j < tabs.children.length; j++){
+        if(tabs.children[j].tagName == "DIV"){
+            divList.push(tabs.children[j]);
+        }
+    }
+
+    // 처음에는 box1만 보이게
+    //boxAni(0);
+
+    for(let i=0; i < tabsLi.length; i++){
+        tabsLi[i].index = i;
+
+        tabsLi[i].addEventListener('click', (e)=>{
+            n = e.currentTarget.index;
+            boxAni(n);
+        });
+    }
+
+    function boxAni(n){
+        for(let j=0; j < divList.length; j++){
+            if(n == j){
+                divList[j].style.display = "block";
+            }else{
+                divList[j].style.display = "none";
+            }
+        }
+    }
+});
+    </script>
+</head>
+<body>
+    <div id="wrap">
+        <header id="header">
+            <div id="header_in">
+                <h1 class="logo">logo</h1>
+                <nav class="nav">
+                    <ul>
+                        <li>
+                            <a href="">menu1</a>
+                            <ul class="sub">
+                                <li><a href="">sub1</a></li>
+                                <li><a href="">sub2</a></li>
+                                <li><a href="">sub3</a></li>
+                                <li><a href="">sub4</a></li>
+                                <li><a href="">sub5</a></li>
+                            </ul> 
+                        </li>
+                        <li>
+                            <a href="">menu2</a>
+                            <ul class="sub">
+                                <li><a href="">sub1</a></li>
+                                <li><a href="">sub2</a></li>
+                                <li><a href="">sub3</a></li>
+                                <li><a href="">sub4</a></li>
+                                <li><a href="">sub5</a></li>
+                            </ul> 
+                        </li>
+                        <li>
+                            <a href="">menu3</a>
+                            <ul class="sub">
+                                <li><a href="">sub1</a></li>
+                                <li><a href="">sub2</a></li>
+                                <li><a href="">sub3</a></li>
+                                <li><a href="">sub4</a></li>
+                                <li><a href="">sub5</a></li>
+                            </ul> 
+                        </li>
+                        <li>
+                            <a href="">menu4</a>
+                            <ul class="sub">
+                                <li><a href="">sub1</a></li>
+                                <li><a href="">sub2</a></li>
+                                <li><a href="">sub3</a></li>
+                                <li><a href="">sub4</a></li>
+                                <li><a href="">sub5</a></li>
+                            </ul> 
+                        </li>
+                        <li>
+                            <a href="">menu5</a>
+                            <ul class="sub">
+                                <li><a href="">sub1</a></li>
+                                <li><a href="">sub2</a></li>
+                                <li><a href="">sub3</a></li>
+                                <li><a href="">sub4</a></li>
+                                <li><a href="">sub5</a></li>
+                            </ul> 
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <section id="main_img">
+            <div class="viewarea">
+                <ul>
+                    <li class="img1"><h3>image1</h3></li>
+                    <li class="img2"><h3>image2</h3></li>
+                    <li class="img3"><h3>image3</h3></li>
+                    <li class="img4"><h3>image4</h3></li>
+                    <li class="img5"><h3>image5</h3></li>
+                </ul>
+            </div>
+            <ul class="btns">
+                <li><a href=""></a></li>
+                <li><a href=""></a></li>
+                <li><a href=""></a></li>
+                <li><a href=""></a></li>
+                <li><a href=""></a></li>
+            </ul>
+        </section>
+        <section id="contents">
+            <article class="tabs" id="tabs">
+                <ul>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JAVASCRIPT</li>
+                    <li>JQUERY</li>
+                    <li>MOVIE</li>
+                </ul>
+                <div class="box1"><h3>box1</h3></div>
+                <div class="box2"><h3>box2</h3></div>
+                <div class="box3"><h3>box3</h3></div>
+                <div class="box4"><h3>box4</h3></div>
+                <div class="box5"><h3>box5</h3></div>
+            </article>
+        </section>
+        <footer id="footer"></footer>
+    </div>s
+</body>
+</html>

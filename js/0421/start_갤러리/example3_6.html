@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>basic :: JavaScript example</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic">
+<style>
+body {
+	margin: 20px;
+	padding: 20px;
+	line-height: 1;
+	font-family: "Open Sans", sans-serif;
+	font-size: 1em;
+	background-color: #f1f1f1;
+	color: #555;
+}
+ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.title {
+	margin: 0;
+	margin-bottom: 35px;
+	padding: 0;
+	font-size: 1.5em;
+	font-weight: 300;
+	color: #555;
+}
+.container {
+	margin-top: 35px;
+	min-width: 440px;
+}
+.controller {
+	padding-top: 20px;
+}
+.controller li {
+	display: inline-block;
+	margin-left: 8px;
+}
+.controller li:first-child {
+	margin-left: 0;
+}
+.controller li a {
+	display: block;
+	width: 20px;
+	height: 20px;
+	background-color: #fff;
+	border-radius: 10px;
+	transition: all 0.3s;
+}
+.controller li.on a {
+	width: 50px;
+	background-color: #8ac007;
+}
+.picture {
+	position: relative;
+	margin-top: 30px;
+	width: 400px;
+	height: 400px;
+	/* overflow: hidden; *//* 수정 */
+}
+.picture ul {
+	/* position: absolute; *//* 수정 */
+	/* left: 0; *//* 수정 */
+	/* top: 0; *//* 수정 */
+	margin: 0;
+	padding: 0;
+	width: 2400px;
+	list-style: none;
+	transition: opacity 0.4s; /* 수정 */
+}
+.picture li {
+	position: absolute; /* 수정 */
+	left: 0; /* 수정 */
+	top: 0; /* 수정 */
+	width: 400px;
+	height: 400px;
+	opacity: 0; /* 수정 */
+	transition: opacity 0.4s; /* 수정 */
+}
+.picture img {
+	max-width: 100%;
+	height: auto;
+}
+.picture li.active { /* 수정 */
+	opacity: 1;
+}
+</style>
+<script>
+	window.addEventListener('load',()=>{
+    const container = document.getElementsByClassName('container')[0]; //div.container
+	const controller = container.children[0]; //div.container > ul
+	const liList = controller.children; //div.container > ul > li
+
+	const picture = document.getElementsByClassName('picture')[0]; //div.picture
+	const pictureUl = picture.children[0]; //div.picture > ul
+	const pictureLi = pictureUl.children;  //div.picture > ul > li
+
+	let n=0;//버튼 인덱스값을 저장하는 공간
+	let current = 0;
+
+		for(let i=0; i < liList.length; i++){//반복문에 의해서 이벤트 대상 개수만 생성
+			liList[i].index = i;//아래쪽 이벤트 적용 liList의 인덱스 여기 설정
+		
+			liList[i].addEventListener('click',(e)=>{
+				e.preventDefault();
+				n = e.currentTarget.index;
+			    //이벤트가 적용된 대상의 인덱스값을 추출할면 먼저 버튼들에 인덱스 값이 설정
+
+			    ani(n);
+			});
+		}
+
+       	let intervalId
+
+		function startAutoSlide() {
+			intervalId = setInterval(() => {
+				current++;
+				if (current == pictureLi.length) {
+					current = 0;
+				}
+				ani(current);
+			}, 3000);
+		}
+
+		function stopAutoSlide() {
+			clearInterval(intervalId);
+		}
+
+		controller.addEventListener("mouseenter", stopAutoSlide);
+		controller.addEventListener("mouseleave", startAutoSlide);
+
+		startAutoSlide(); 
+
+		const ani = (i) => {
+			for(let j=0; j < liList.length; j++){
+                  if(i == j){
+					liList[j].classList.add('on');
+					pictureLi[j].classList.add('active');
+				  }else{
+					liList[j].classList.remove('on');
+					pictureLi[j].classList.remove('active');
+				  }
+			}
+
+			current = i;
+		}
+
+
+
+
+	});
+</script>
+</head>
+
+<body>
+
+<div class="container">
+	<ul class="controller">
+		<li class="on"><a href=""></a></li>
+		<li><a href=""></a></li>
+		<li><a href=""></a></li>
+		<li><a href=""></a></li>
+		<li><a href=""></a></li>
+		<li><a href=""></a></li>
+	</ul>
+	<div class="picture">
+		<ul>
+			<li class="active"><img src="images/work1.jpg" alt=""></li>
+			<li><img src="images/work2.jpg" alt=""></li>
+			<li><img src="images/work3.jpg" alt=""></li>
+			<li><img src="images/work4.jpg" alt=""></li>
+			<li><img src="images/work5.jpg" alt=""></li>
+			<li><img src="images/work6.jpg" alt=""></li>
+		</ul>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul,li{ list-style: none;}
+        a{text-decoration: none;}
+
+        #tabs{
+            width: 600px;
+            height: 450px;
+            border: 1px solid #ccc;
+        }
+        #tabs .btns{
+            width: 100%;
+            height: 30px;
+            display:flex ;
+            justify-content: space-around;
+        }
+
+        #tabs .btns a{
+            display: block;
+            width: 150px;
+            height: 30px;
+            background-color:#000;
+            color: #fff;
+            text-align: center;
+            line-height:30px;
+        }
+        #tabs .btns li.on a{
+             background-color:#ccc;
+             color: #000;
+        }
+
+        #tabs .info_area{
+            width: 600px;
+            height: 420px;
+            position: relative;
+        }
+        #tabs .info_area > div{
+            width: 600px;
+            height: 420px;
+            position:absolute;
+            top:0; left: 0;
+            display: none;
+        }
+        #tabs .info_area > div.act{
+             display: block;
+        }
+        #tabs .info_area > div.info_box1{
+            z-index: 400;
+            background-color: violet;
+        }
+        #tabs .info_area > div.info_box2{
+            z-index: 300;
+            background-color: rgb(213, 216, 27);
+        }
+        #tabs .info_area > div.info_box3{
+            z-index: 200;
+            background-color: rgb(31, 162, 223);
+        }
+        #tabs .info_area > div.info_box4{
+            z-index: 100;
+            background-color: rgb(222, 113, 18);
+        }
+    </style>
+    <script>
+        window.addEventListener('load',()=>{
+          const tabs = document.getElementById('tabs');
+        // const btns = tabs.children[0];
+        // const info_area = tabs.children[1];
+
+        let btns;
+        let infoArea;
+        let n = 0;
+
+          for(let i=0; i < tabs.children.length; i++){//0 1
+               if(tabs.children[i].tagName == 'UL'){
+                    btns = tabs.children[i];//0
+               }else{
+                    infoArea = tabs.children[i];//1
+               }
+          }
+         //확인
+         //console.log(btns);
+         //console.log(info_area);
+
+         const btnsLi = btns.children;
+         btnsLi[n].classList.add('on');
+         const infoAreaDiv = infoArea.children;
+         infoAreaDiv[n].classList.add('act');
+
+         for(let i=0; i < btnsLi.length; i++){//0 1 2 3 반복실행
+            btnsLi[i].index = i;//인덱스값 설정 
+            btnsLi[i].addEventListener('click',(e)=>{
+                e.preventDefault();
+                n = e.currentTarget.index;//클릭이벤트가적용된버튼인덱스
+                //console.log(n);
+
+                for(let j=0; j < btnsLi.length; j++ ){//0 1 2 3
+                   if(n == j){
+                    btnsLi[j].classList.add('on'); 
+                    infoAreaDiv[j].classList.add('act'); 
+                   }else{
+                    btnsLi[j].classList.remove('on'); 
+                    infoAreaDiv[j].classList.remove('act'); 
+                   } 
+                   
+                }
+
+            })
+         }
+         
+
+
+
+
+
+        })
+    </script>
+</head>
+<body>
+    <div id="tabs">
+        <ul class="btns">
+            <li><a href="">menu1</a></li>
+            <li><a href="">menu2</a></li>
+            <li><a href="">menu3</a></li>
+            <li><a href="">menu4</a></li>
+        </ul>
+        <div class="info_area">
+            <div class="info_box1">
+                <h3>info_box1</h3>
+            </div>
+            <div class="info_box2">
+                <h3>info_box2</h3>
+            </div>
+            <div class="info_box3">
+                <h3>info_box3</h3>
+            </div>
+            <div class="info_box4">
+                <h3>info_box4</h3>
+            </div>
+        </div>
+    
+    </div>
+</body>
+</html>

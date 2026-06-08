@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/nav.js"></script>
+    <script src="./js/mainslide.js"></script>
+    <script src="./js/tabs.js"></script>
+    <script src="./js/s_gallery.js"></script>
+    <script src="./js/popup.js"></script>
+    <script src="./js/scroll_ani.js"></script>
+    <script>
+       window.addEventListener('load',()=>{
+        const  qMenu = document.getElementById('q_menu');
+        console.log(qMenu);
+        let currentY = 0; //현재 위치
+        let targetY = 0; //목표 위치
+        const speed = 0.1; //부드러움 정도
+        let st01= 0; // 스크롤이 발생했을때
+
+        window.addEventListener('scroll', function(){
+            st01 = window.pageYOffset+200;
+            console.log(st01);
+            //qMenu.style.top =st01 + "px";
+
+            function movie(){
+                currentY += (st01 - currentY)*speed;
+                qMenu.style.top = currentY + "px";
+                requestAnimationFrame(movie);
+                //st01값이 스크롤 되어 바뀔때마다 자신을 호출하여 반복재생을 하게 함
+                //그래서 부드러운 애니메이션이 생성됨
+            }
+            movie()
+        })
+
+        //window.addEventListener('scroll',function(){
+        //     console.log(st);
+        //    qMenu.style.top= (st+50) + "px";
+        //})
+
+        
+       })
+    </script>
+</head>
+<body>
+    <div id="wrap">
+        <header id="header">
+            <div id="header_in">
+                <h1 class="logo">logo</h1>
+                <nav class="nav">
+                    <ul>
+                        <li>
+                            <a href="">menu1</a>
+                            <ul class="sub">
+                                <li><a href="">sub1</a></li>
+                                <li><a href="">sub2</a></li>
+                                <li><a href="">sub3</a></li>
+                                <li><a href="">sub4</a></li>
+                                <li><a href="">sub5</a></li>
+                            </ul> 
+                        </li>
+                        <li>
+                            <a href="">menu2</a>
+                            <ul class="sub">
+                                <li><a href="">sub1</a></li>
+                                <li><a href="">sub2</a></li>
+                                <li><a href="">sub3</a></li>
+                                <li><a href="">sub4</a></li>
+                                <li><a href="">sub5</a></li>
+                            </ul> 
+                        </li>
+                        <li>
+                            <a href="">menu3</a>
+                            <ul class="sub">
+                                <li><a href="">sub1</a></li>
+                                <li><a href="">sub2</a></li>
+                                <li><a href="">sub3</a></li>
+                                <li><a href="">sub4</a></li>
+                                <li><a href="">sub5</a></li>
+                            </ul> 
+                        </li>
+                        <li>
+                            <a href="">menu4</a>
+                            <ul class="sub">
+                                <li><a href="">sub1</a></li>
+                                <li><a href="">sub2</a></li>
+                                <li><a href="">sub3</a></li>
+                                <li><a href="">sub4</a></li>
+                                <li><a href="">sub5</a></li>
+                            </ul> 
+                        </li>
+                        <li>
+                            <a href="">menu5</a>
+                            <ul class="sub">
+                                <li><a href="">sub1</a></li>
+                                <li><a href="">sub2</a></li>
+                                <li><a href="">sub3</a></li>
+                                <li><a href="">sub4</a></li>
+                                <li><a href="">sub5</a></li>
+                            </ul> 
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <section id="main_img">
+            <div class="viewarea">
+                <ul>
+                    <li class="img1"><h3>image1</h3></li>
+                    <li class="img2"><h3>image2</h3></li>
+                    <li class="img3"><h3>image3</h3></li>
+                    <li class="img4"><h3>image4</h3></li>
+                    <li class="img5"><h3>image5</h3></li>
+                </ul>
+            </div>
+            <ul class="btns">
+                <li><a href=""></a></li>
+                <li><a href=""></a></li>
+                <li><a href=""></a></li>
+                <li><a href=""></a></li>
+                <li><a href=""></a></li>
+            </ul>
+        </section>
+        <section id="contents">
+            <article class="tabs" id="tabs">
+                <ul>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JAVASCRIPT</li>
+                    <li>JQUERY</li>
+                    <li>MOVIE</li>
+                </ul>
+                <div class="box1"><h3>box1</h3></div>
+                <div class="box2"><h3>box2</h3></div>
+                <div class="box3"><h3>box3</h3></div>
+                <div class="box4"><h3>box4</h3></div>
+                <div class="box5"><h3>box5</h3></div>
+            </article>
+            <article class="gallery">
+                <header class="g_header">
+                    <ul id="g_gnb">
+                        <li>1</li>
+                        <li>2</li>
+                        <li>3</li>
+                        <li>4</li>
+                        <li>5</li>
+                        <li>6</li>
+                    </ul>
+                </header>
+                <section class="g_body">
+                    <ul>
+                        <li>
+                            <h4>gallery1</h4>
+                        </li>
+                        <li>
+                            <h4>gallery2</h4>
+                        </li>
+                        <li>
+                            <h4>gallery3</h4>
+                        </li>
+                        <li>
+                            <h4>gallery4</h4>
+                        </li>
+                        <li>
+                            <h4>gallery5</h4>
+                        </li>
+                        <li>
+                            <h4>gallery6</h4>
+                        </li>
+                    </ul>
+
+                </section>
+            </article>
+            <article class="scroll_ani">
+                <div class="box_l">
+                    box_l
+                </div>
+                <div class="box_r">
+                    box_r
+                </div>
+
+            </article>
+        </section>
+        <footer id="footer"></footer>
+        <!-- 팝업창 -->
+         <div id="popup">
+            <a href="#">닫기</a>
+         </div>
+        <!-- 퀵메뉴 -->
+         <div id="q_menu">q_menu</div>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul,li{
+            list-style: none;
+        }
+        a{text-decoration: none;}
+        #header{
+            width: 100%;
+            height: 130px;
+            background-color: aqua;
+        }
+        #header_in{
+            margin: 0 auto;
+            width: 1500px;
+            height: 130px;
+            background-color: rgb(230, 253, 253);
+        }
+        #header_in h1{
+            float: left;
+            width: 120px;
+            height: 100px;
+            margin: 15px 0 0 20px;
+            text-align: center;
+            line-height: 100px;
+        }
+        #header_in nav{
+            float: right;
+            margin: 50px 20px 0 0; 
+            width: 800px;
+            height: 50px;
+            border: 1px solid #ccc;
+         }
+         #header_in nav ul{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+         }
+         #header_in nav a{
+          display:block;
+          width: 160px;
+          height: 50px;
+          text-align: center;
+          line-height: 50px;
+          background-color: azure;
+          transition: all 0.7s;
+         }
+        #header_in nav li.on a{
+            background-color: cadetblue;
+            color: #fff;
+        }
+        #header .subarea{
+            position: absolute;
+            top:130px; left: 0;
+            z-index: 9999;
+            width: 100%;
+            height: 0px;
+            background-color: #ccc;
+            overflow: hidden;
+            transition: all 0.7s;
+        }
+        #header .subarea_over{
+             height: 300px;
+        }
+
+        #main_img{
+            width: 100%;
+            height: 800px;
+            background-color: cadetblue;
+        }
+    </style>
+    <script>
+        window.addEventListener('load',()=>{
+         const nav = document.getElementsByTagName('nav')[0];
+         //const navUl = document.getElementsByTagName('nav > ul')[0];
+         //const navLi = nav.children[0].children;//nav > ul > li
+         const navLi = document.querySelectorAll('nav > ul > li');//nav > ul > li
+         const subarea = document.getElementsByClassName('subarea')[0];
+         console.log(navLi)
+
+         nav.addEventListener('mouseenter',()=>{
+           subarea.classList.add('subarea_over');
+           console.log('over')
+         });
+
+         subarea.addEventListener('mouseleave',()=>{
+              subarea.classList.remove('subarea_over');   
+         });
+
+         for(let i=0; i < navLi.length; i++ ){
+            navLi[i].addEventListener('mouseenter',(e)=>{
+                e.currentTarget.classList.add('on');
+            })
+            navLi[i].addEventListener('mouseleave',(e)=>{
+                e.currentTarget.classList.remove('on');
+            })
+         }
+        })
+    </script>
+</head>
+<body>
+    <header id="header">
+       <div id="header_in">
+          <h1>로고</h1>
+          <nav>
+            <ul>
+                <li><a href="">menu1</a></li>
+                <li><a href="">menu2</a></li>
+                <li><a href="">menu3</a></li>
+                <li><a href="">menu4</a></li>
+                <li><a href="">menu5</a></li>
+            </ul>
+          </nav>
+       </div>
+       <div class="subarea">subarea</div>       
+    </header>
+    <section id="main_img"></section>
+</body>
+</html>
