@@ -1,3 +1,25 @@
+/* MAIN RESPONSIVE IMAGE FALLBACK
+   태블릿·모바일 이미지가 아직 준비되지 않았거나 경로가 틀린 경우,
+   해당 슬라이드의 기존 데스크톱 이미지로 자동 복구합니다. */
+document.querySelectorAll("#main .main_slide picture img").forEach(function(image) {
+    image.addEventListener("error", function handleMainImageError() {
+        const fallback = image.dataset.fallback;
+        const picture = image.closest("picture");
+
+        if (!fallback || image.src.endsWith(fallback.replace("./", ""))) {
+            return;
+        }
+
+        if (picture) {
+            picture.querySelectorAll("source").forEach(function(source) {
+                source.remove();
+            });
+        }
+
+        image.src = fallback;
+    });
+});
+
 window.addEventListener("load", function(){
     const lenis = new Lenis({
         duration: 2.5,
@@ -98,81 +120,117 @@ const menuData = {
     cake: [
         {
             img: "./images/cake.png",
-            tag: "부드러운 딸기 생크림",
+            tag: "초코와 딸기의 달콤한 조화",
             title: "초코 딸기 생크림",
-            desc: "촉촉한 초코 시트 위에 흐르는 고소한 커스터드와 신선한 제철 딸기, 부드러운 크림이 어우러진 만족스러운 케이크"
+            desc: "촉촉한 초코 시트에 고소한 커스터드와 신선한 제철 딸기, 부드러운 생크림을 더한 케이크"
         },
         {
             img: "./images/cake2.png",
-            tag: "고소한 크림 케이크",
-            title: "월넛 크림 케이크",
-            desc: "부드러운 시트와 고소한 크림, 견과류의 식감이 어우러진 담백한 케이크"
+            tag: "당근과 크림치즈의 고소함",
+            title: "당근 케이크",
+            desc: "촉촉한 당근 시트에 부드러운 크림치즈와 은은한 계피 향이 어우러진 케이크"
         },
         {
             img: "./images/cake3.png",
-            tag: "진한 초코 케이크",
-            title: "초코 생크림 케이크",
-            desc: "진한 초코 풍미와 부드러운 생크림이 조화롭게 어우러진 케이크"
+            tag: "진한 다크초콜릿 풍미",
+            title: "가나슈 초콜릿",
+            desc: "촉촉한 초코 시트와 스위스산 다크초콜릿 가나슈, 부드러운 생크림이 조화를 이루는 케이크"
         },
         {
             img: "./images/cake4.png",
-            tag: "상큼한 과일 케이크",
-            title: "딸기 생크림 케이크",
-            desc: "신선한 딸기와 부드러운 생크림이 가득한 산뜻한 케이크"
+            tag: "산딸기와 가나슈의 조화",
+            title: "사각산딸기가나슈",
+            desc: "상큼한 산딸기와 진한 초콜릿 가나슈, 부드러운 생크림을 층층이 담은 케이크"
+        },
+        {
+            img: "./images/cake5.png",
+            tag: "상큼한 산딸기 치즈케이크",
+            title: "산딸기치즈",
+            desc: "풍미 깊은 치즈와 상큼한 산딸기, 바삭한 초코 쿠키가 어우러진 치즈케이크"
+        },
+        {
+            img: "./images/cake6.png",
+            tag: "깊고 진한 쇼콜라 케이크",
+            title: "로얄쇼콜라",
+            desc: "스위스산 다크초콜릿의 깊은 풍미와 부드러운 초코 크림을 진하게 즐길 수 있는 케이크"
+        },
+        {
+            img: "./images/cake7.png",
+            tag: "산뜻한 그릭 요거트 무스",
+            title: "소문의 가든 그릭 요거트",
+            desc: "부드러운 요거트 무스에 상큼한 산딸기 콩포트와 생과일을 풍성하게 올린 산뜻한 케이크"
+        },
+        {
+            img: "./images/cake8.png",
+            tag: "말차와 딸기의 깊은 조화",
+            title: "말차 스트로베리 프레지에",
+            desc: "깊고 진한 말차 크림과 상큼한 딸기를 말차 시트 사이에 층층이 쌓아 올린 케이크"
+        }
+    ],
+
+    sweet: [
+        {
+            img: "./images/sweet1.png",
+            tag: "폭신한 시트와 부드러운 크림",
+            title: "롤케이크",
+            desc: "폭신하게 구운 시트에 부드러운 크림을 가득 말아 촉촉하고 가볍게 즐기는 롤케이크"
+        },
+        {
+            img: "./images/sweet2.png",
+            tag: "버터 풍미가 깊은 구움과자",
+            title: "파운드",
+            desc: "고소한 버터의 풍미와 촉촉하고 묵직한 식감을 즐길 수 있는 클래식 파운드케이크"
+        },
+        {
+            img: "./images/sweet3.png",
+            tag: "초콜릿을 품은 구움과자",
+            title: "티그레",
+            desc: "고소한 아몬드 반죽에 초콜릿 칩을 더하고 진한 가나슈로 마무리한 프랑스식 구움과자"
+        },
+        {
+            img: "./images/sweet4.png",
+            tag: "진하고 꾸덕한 초콜릿 디저트",
+            title: "브라우니 세트",
+            desc: "깊은 초콜릿 풍미와 꾸덕한 식감을 담아 커피와 함께 즐기기 좋은 브라우니 세트"
+        },
+        {
+            img: "./images/sweet5.png",
+            tag: "다채롭게 즐기는 쿠키 세트",
+            title: "딜라이트 쿠키 3종 세트",
+            desc: "서로 다른 맛과 식감을 담은 쿠키 세 가지를 한 번에 즐길 수 있는 디저트 세트"
+        },
+        {
+            img: "./images/sweet6.png",
+            tag: "마음을 담은 디저트 선물",
+            title: "선물세트",
+            desc: "한스의 인기 구움과자와 디저트를 정성스럽게 구성해 소중한 마음을 전하기 좋은 선물세트"
         }
     ],
 
     drink: [
         {
             img: "./images/drink1.png",
-            tag: "달콤한 시그니처 음료",
-            title: "딸기 라떼",
-            desc: "신선한 딸기와 부드러운 우유가 어우러진 산뜻하고 달콤한 음료"
+            tag: "달콤한 카라멜 커피",
+            title: "카라멜 마키아또",
+            desc: "바닐라 시럽과 부드러운 우유 위에 에스프레소 샷을 더하고 달콤한 카라멜 드리즐로 마무리한 음료"
         },
         {
             img: "./images/drink2.png",
-            tag: "깊고 진한 커피",
-            title: "아메리카노",
-            desc: "깔끔한 산미와 고소한 풍미가 조화로운 기본 커피 메뉴"
+            tag: "깔끔하고 깊은 블랙커피",
+            title: "카페 아메리카노",
+            desc: "진한 에스프레소에 물을 더해 원두의 깊은 향과 깔끔한 여운을 즐길 수 있는 커피"
         },
         {
             img: "./images/drink3.png",
-            tag: "부드러운 디저트 음료",
-            title: "바닐라 라떼",
-            desc: "은은한 바닐라 향과 부드러운 우유가 어우러진 라떼"
+            tag: "진한 에스프레소와 부드러운 거품",
+            title: "에스프레소 마끼아또",
+            desc: "강렬한 에스프레소 위에 소량의 부드러운 우유 거품을 얹어 진한 풍미를 살린 음료"
         },
         {
             img: "./images/drink4.png",
-            tag: "상큼한 과일 음료",
-            title: "레몬 에이드",
-            desc: "상큼한 레몬 향과 청량감이 살아있는 시원한 에이드"
-        }
-    ],
-
-    order: [
-        {
-            img: "./images/order1.png",
-            tag: "특별한 날을 위한 케이크",
-            title: "생일 주문 케이크",
-            desc: "원하는 분위기와 문구를 담아 특별한 날을 더 빛나게 해주는 주문 케이크"
-        },
-        {
-            img: "./images/order2.png",
-            tag: "소중한 마음을 담은 선물",
-            title: "기념일 케이크",
-            desc: "기념일의 감성을 담아 정성스럽게 완성하는 맞춤형 케이크"
-        },
-        {
-            img: "./images/order3.png",
-            tag: "행사용 맞춤 디저트",
-            title: "단체 주문 케이크",
-            desc: "행사와 모임에 어울리도록 구성하는 맞춤형 디저트 메뉴"
-        },
-        {
-            img: "./images/order4.png",
-            tag: "원하는 디자인 그대로",
-            title: "커스텀 케이크",
-            desc: "색감, 장식, 문구를 조합해 나만의 분위기로 완성하는 케이크"
+            tag: "고소하고 부드러운 라떼",
+            title: "카페라떼",
+            desc: "진한 에스프레소와 따뜻한 우유가 부드럽게 어우러지고 고운 우유 거품으로 마무리된 음료"
         }
     ]
 };
@@ -184,12 +242,33 @@ let autoTimer;
 const slideItems = document.querySelectorAll("#menu .slide_item");
 const prevBtn = document.querySelector("#menu .prev");
 const nextBtn = document.querySelector("#menu .next");
-const dots = document.querySelectorAll("#menu .pagination span");
+const pagination = document.querySelector("#menu .pagination");
+let dots = [];
 const categoryBtns = document.querySelectorAll("#menu .menu_category li");
 const activeSlide = document.querySelector("#menu .slide_item.active");
 
 function getCurrentItems(){
     return menuData[currentCategory];
+}
+
+function renderDots(){
+    if(!pagination) return;
+
+    pagination.innerHTML = "";
+
+    getCurrentItems().forEach((item, index) => {
+        const dot = document.createElement("span");
+
+        dot.addEventListener("click", function(){
+            currentIndex = index;
+            changeSlide();
+            restartAutoPlay();
+        });
+
+        pagination.appendChild(dot);
+    });
+
+    dots = pagination.querySelectorAll("span");
 }
 
 function getIndex(index){
@@ -293,13 +372,6 @@ nextBtn.addEventListener("click", function(){
     restartAutoPlay();
 });
 
-dots.forEach((dot, index) => {
-    dot.addEventListener("click", function(){
-        currentIndex = index;
-        changeSlide();
-        restartAutoPlay();
-    });
-});
 
 categoryBtns.forEach((btn, index) => {
     btn.addEventListener("click", function(e){
@@ -314,12 +386,13 @@ categoryBtns.forEach((btn, index) => {
         if(index === 0){
             currentCategory = "cake";
         } else if(index === 1){
-            currentCategory = "drink";
+            currentCategory = "sweet";
         } else if(index === 2){
-            currentCategory = "order";
+            currentCategory = "drink";
         }
 
         currentIndex = 0;
+        renderDots();
         changeSlide();
         restartAutoPlay();
     });
@@ -339,6 +412,7 @@ slideItems.forEach((item) => {
     });
 });
 
+renderDots();
 updateSlide();
 startAutoPlay();
 
@@ -468,10 +542,15 @@ window.addEventListener("load", function(){
 
 });
 
-const mobileBtn = document.querySelector('.mobile_menu_btn');
-const mobileSitemap = document.querySelector('.mobile_sitemap');
+const mobileBtn = document.querySelector(".mobile_menu_btn");
+const mobileSitemap = document.querySelector(".mobile_sitemap");
 
-mobileBtn.addEventListener('click', function(){
-    mobileBtn.classList.toggle('active');
-    mobileSitemap.classList.toggle('active');
-});
+if (mobileBtn && mobileSitemap) {
+    mobileBtn.addEventListener("click", function () {
+        const isOpen = mobileSitemap.classList.toggle("active");
+
+        mobileBtn.classList.toggle("active", isOpen);
+        document.documentElement.classList.toggle("menu_open", isOpen);
+        document.body.classList.toggle("menu_open", isOpen);
+    });
+}

@@ -23,9 +23,9 @@
                 <nav id="nav">
                     <ul>
                         <li>
-                            <a href="#">BRAND</a>
+                            <a href="./brand.html">BRAND</a>
                             <ul class="sub_menu">
-                                <li><a href="#">브랜드소개</a></li>
+                                <li><a href="./brand.html">브랜드소개</a></li>
                             </ul>
                         </li>
                         <li>
@@ -111,18 +111,56 @@
         <main id="main">
             <div class="main_slider">
                 <div class="main_slide active">
-                    <img src="./images/main_img.png" alt="">
+                    <picture>
+                        <!-- 모바일 전용 이미지: 세로형 권장 (예: 750 × 940) -->
+                        <source
+                            media="(max-width: 600px)"
+                            srcset="./images/main_img_mobile.png"
+                        >
+
+                        <!-- 태블릿 전용 이미지: 3:2 비율 권장 (예: 1200 × 800) -->
+                        <source
+                            media="(max-width: 1000px)"
+                            srcset="./images/main_img_tablet.png"
+                        >
+
+                        <!-- 데스크톱 기존 이미지 -->
+                        <img
+                            src="./images/main_img.png"
+                            data-fallback="./images/main_img.png"
+                            alt="한스 케이크 메인 비주얼"
+                        >
+                    </picture>
                 </div>
+
                 <div class="main_slide">
-                    <img src="./images/main_img2.png" alt="">
+                    <picture>
+                        <!-- 모바일 전용 이미지: 세로형 권장 (예: 750 × 940) -->
+                        <source
+                            media="(max-width: 600px)"
+                            srcset="./images/main_img2_mobile.png"
+                        >
+
+                        <!-- 태블릿 전용 이미지: 3:2 비율 권장 (예: 1200 × 800) -->
+                        <source
+                            media="(max-width: 1000px)"
+                            srcset="./images/main_img2_tablet.png"
+                        >
+
+                        <!-- 데스크톱 기존 이미지 -->
+                        <img
+                            src="./images/main_img2.png"
+                            data-fallback="./images/main_img2.png"
+                            alt="한스 케이크 두 번째 메인 비주얼"
+                        >
+                    </picture>
                 </div>
             </div>
 
-            <button class="main_btn main_prev"></button>
-            <button class="main_btn main_next"></button>
+            <button class="main_btn main_prev" type="button" aria-label="이전 메인 슬라이드"></button>
+            <button class="main_btn main_next" type="button" aria-label="다음 메인 슬라이드"></button>
 
-            <div class="main_pagination">
-            </div>
+            <div class="main_pagination" aria-label="메인 슬라이드 페이지"></div>
         </main>
         <section id="contents">
             <article id="menu">
