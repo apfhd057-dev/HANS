@@ -64,6 +64,10 @@ html, body {
     color: #34130C;
 }
 
+#nav a:hover{
+    color: #d94a1e;
+}
+
 #nav > ul > li {
     position: relative;
     padding-bottom: 20px;
@@ -185,6 +189,9 @@ html, body {
     z-index: 10;
     cursor: pointer;
 }
+#main .main_btn:hover{
+    background: rgba(0,0,0,0.7);
+}
 
 #main .main_prev {
     left: 260px;
@@ -213,7 +220,6 @@ html, body {
     right: 22px;
     transform: translateY(-50%) rotate(135deg);
 }
-
 #main .main_pagination {
     position: absolute;
     left: 50%;
@@ -406,6 +412,11 @@ html, body {
     line-height: 44px;
 }
 
+#menu .slide_item.active .cake_text a:hover{
+    background-color: #333;
+    color: #fff;
+}
+
 #menu .slide_btn {
     position: absolute;
     top: 50%;
@@ -549,7 +560,7 @@ html, body {
 #brand_story .story_right {
     position: relative;
     width: 44%;
-    padding-top: 50px;
+    padding-top: 30px;
     z-index: 5;
 }
 
@@ -611,7 +622,7 @@ html, body {
 }
 
 #brand_story p {
-    margin-bottom: 18px;
+    margin-bottom: 40px;
     font-size: 18px;
     line-height: 32px;
     letter-spacing: -0.02em;
@@ -638,7 +649,7 @@ html, body {
 }
 
 #brand_story .story_fill_title {
-    margin-bottom: 110px;
+    margin-bottom: 70px;
     font-size: 64px;
     line-height: 1.28;
     font-weight: 900;
@@ -696,6 +707,34 @@ html, body {
 #brand_story .story_right p:nth-of-type(2) {
     transition-delay: 0.9s;
 }
+/* VIEW 버튼 처음 상태 */
+#brand_story .story_right > a {
+    display: inline-block;
+    width: 150px;
+    height: 44px;
+
+    background-color: #34130c;
+    color: #fff;
+    text-align: center;
+    line-height: 44px;
+
+    opacity: 0;
+    transform: translateY(35px);
+    transition:
+        opacity 0.8s ease 1.1s,
+        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) 1.1s,
+        background-color 0.3s ease;
+}
+
+/* 브랜드 스토리가 화면에 들어왔을 때 */
+#brand_story.act .story_right > a {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#brand_story .story_right > a:hover {
+    background-color: #d94a1e;
+}
 
 
 /* =========================
@@ -748,6 +787,10 @@ html, body {
     text-align: center;
     line-height: 50px;
     color: #fff;
+}
+#order .order_text a:hover{
+    background-color: #fff;
+    color: #111;
 }
 
 #order .order_bg {
@@ -1056,7 +1099,6 @@ html, body {
     margin-bottom: 50px;
     color: #fff;
 }
-
 #board_menu .event button,
 #board_menu .faq button {
     border: 2px solid #fff;
@@ -1065,6 +1107,11 @@ html, body {
     height: 60px;
     border-radius: 50%;
     color: #fff;
+}
+
+#board_menu .event button:hover,
+#board_menu .faq button:hover {
+    border: 2px solid #D03413;
 }
 
 #board_menu .faq {
@@ -1117,6 +1164,7 @@ html, body {
     align-items: center;
     font-size: 28px;
     color: #B3B3B3;
+    cursor: pointer;
 }
 
 #board_menu .notice_list li {
@@ -1141,7 +1189,9 @@ html, body {
     justify-content: space-between;
     align-items: center;
 }
-
+#board_menu .notice_list a:hover{
+    color: #1BA449;
+}
 #board_menu .board_motion_left {
     opacity: 0;
     transform: translateX(-100px);

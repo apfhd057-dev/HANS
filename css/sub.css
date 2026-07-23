@@ -89,6 +89,9 @@ body {
     font-size: 20px;
     color: var(--hans-brown);
 }
+#nav a:hover{
+    color: #d94a1e;
+}
 
 #nav .sub_menu {
     position: absolute;
@@ -254,7 +257,6 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-bottom: 120px;
     font-size: 18px;
     font-weight: 900;
 }
@@ -266,6 +268,7 @@ body {
 
 #con1 .main_circle p {
     font-size: 16px;
+    text-align: center;
 }
 
 /* =========================
