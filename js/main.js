@@ -501,26 +501,6 @@ window.addEventListener("load", function(){
     searchStoreMotion();
 
 });
-window.addEventListener("load", function(){
-
-    const searchStore = document.querySelector("#search_store");
-
-    function searchStoreMotion(){
-        if(!searchStore) return;
-
-        const sectionTop = searchStore.getBoundingClientRect().top;
-        const windowH = window.innerHeight;
-
-        if(sectionTop < windowH - 180){
-            searchStore.classList.add("act");
-        }
-    }
-
-    window.addEventListener("scroll", searchStoreMotion, { passive: true });
-    searchStoreMotion();
-
-});
-
 // 보더메뉴 효과 js
 window.addEventListener("load", function(){
 

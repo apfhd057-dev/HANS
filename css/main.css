@@ -657,9 +657,18 @@ html, body {
 }
 
 #brand_story .story_fill_title .fill_line {
-    position: relative;
-    display: block;
+    display: grid;
     width: fit-content;
+    max-width: 100%;
+}
+
+/* base와 cover를 같은 grid 칸에 겹쳐 줄바꿈 위치를 완전히 일치시킵니다. */
+#brand_story .story_fill_title .fill_line > span {
+    grid-area: 1 / 1;
+    display: block;
+    max-width: 100%;
+    line-height: inherit;
+    word-break: keep-all;
 }
 
 #brand_story .story_fill_title .base {
@@ -667,13 +676,13 @@ html, body {
 }
 
 #brand_story .story_fill_title .cover {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 0;
-    overflow: hidden;
-    white-space: nowrap;
-    transition: width 1.4s ease;
+    color: inherit;
+    -webkit-clip-path: inset(0 100% 0 0);
+    clip-path: inset(0 100% 0 0);
+    transition:
+        -webkit-clip-path 1.4s ease,
+        clip-path 1.4s ease;
+    will-change: clip-path;
 }
 
 #brand_story .story_fill_title .cover.black {
@@ -686,7 +695,8 @@ html, body {
 }
 
 #brand_story.act .story_fill_title .cover {
-    width: 100%;
+    -webkit-clip-path: inset(0 0 0 0);
+    clip-path: inset(0 0 0 0);
 }
 
 #brand_story .story_right p {
@@ -1157,14 +1167,21 @@ html, body {
 #board_menu .notice_icon {
     width: 60px;
     height: 60px;
+    flex-shrink: 0;
+    aspect-ratio: 1 / 1;
+
     border-radius: 50%;
     border: 1px solid #DCDCDC;
+
     display: flex;
     justify-content: center;
     align-items: center;
+
     font-size: 28px;
+    line-height: 1;
     color: #B3B3B3;
     cursor: pointer;
+    box-sizing: border-box;
 }
 
 #board_menu .notice_list li {
@@ -1802,6 +1819,10 @@ html, body {
     body.menu_open {
         overflow: hidden;
     }
+    #board_menu .event p,
+    #board_menu .faq p {
+        margin-bottom: 30px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -1836,20 +1857,28 @@ html, body {
     }
 
     #menu .menu_category {
-        gap: 10px;
-        margin-bottom: 45px;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+        width: 100%;
+        max-width: 430px;
+        margin: 0 auto 45px;
     }
 
     #menu .menu_category li {
-        width: auto;
-        min-width: 100px;
+        width: 100%;
+        min-width: 0;
         height: 44px;
+        padding: 0 6px;
         line-height: 44px;
-        padding: 0 18px;
+        box-sizing: border-box;
     }
 
     #menu .menu_category a {
+        overflow: hidden;
         font-size: 15px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 
     #menu .slide_item.active {
@@ -2033,6 +2062,17 @@ html, body {
         font-size: 14px;
         color: #888;
     }
+    #board_menu .notice_title {
+        flex: 1;
+        min-width: 0;
+    }
+
+    #board_menu .notice_icon {
+        width: 46px;
+        height: 46px;
+        flex: 0 0 46px;
+        font-size: 24px;
+    }
 
     #footer .footer_inner {
         padding-left: 20px;
@@ -2118,14 +2158,18 @@ html, body {
     }
 
     #menu .menu_category {
-        justify-content: flex-start;
-        overflow-x: auto;
-        flex-wrap: nowrap;
-        padding-bottom: 8px;
+        gap: 6px;
+        margin-bottom: 40px;
     }
 
     #menu .menu_category li {
-        flex-shrink: 0;
+        height: 42px;
+        padding: 0 4px;
+        line-height: 42px;
+    }
+
+    #menu .menu_category a {
+        font-size: 14px;
     }
 
     #menu .slide_item.active .cake_img img {
@@ -2158,9 +2202,6 @@ html, body {
         font-size: 30px;
     }
 
-    #brand_story .story_fill_title .cover {
-        white-space: normal;
-    }
 
     #order .order_text h2 {
         font-size: 28px;
@@ -2174,6 +2215,10 @@ html, body {
     #board_menu .faq h4,
     #board_menu .notice_title h4 {
         font-size: 26px;
+    }
+    #board_menu .event p,
+    #board_menu .faq p {
+        margin-bottom: 20px;
     }
 
     #header .mobile_sitemap {

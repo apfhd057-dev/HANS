@@ -1121,7 +1121,10 @@ body {
         padding-bottom: 105px;
     }
 
-    .con1 {
+    .con1,
+    .con2,
+    .con3,
+    .con4 {
         padding-right: 20px;
         padding-left: 20px;
     }
@@ -1405,3 +1408,513 @@ body {
         transition: none !important;
     }
 }
+
+/* =========================================================
+   RESPONSIVE FIX V3
+   기존 레이아웃은 유지하고 문제 부분만 수정
+========================================================= */
+
+/* width:100% + padding 때문에 화면보다 넓어지지 않게 */
+.con1 {
+    box-sizing: border-box;
+}
+
+/* ---------------------------------------------------------
+   TABLET
+   POINT 원 내부 넘침 제거 + 세 번째 원 가운데 배치
+--------------------------------------------------------- */
+@media (max-width: 900px) {
+    .con1 {
+        width: 100%;
+        padding-right: 28px;
+        padding-left: 28px;
+    }
+
+    /* 기존 flex-wrap 구조를 유지하면 세 번째 원이 자동으로 중앙 배치됨 */
+    #con1 .circle_group {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 30px 24px;
+        width: 100%;
+    }
+
+    #con1 .dotted_circle {
+        flex: 0 0 min(42vw, 340px);
+        width: min(42vw, 340px);
+        height: auto;
+        aspect-ratio: 1 / 1;
+        padding: 8px;
+        box-sizing: border-box;
+    }
+
+    #con1 .main_circle {
+        width: 100%;
+        height: 100%;
+        padding: 28px 24px;
+        gap: 10px;
+        box-sizing: border-box;
+    }
+
+    #con1 .main_circle span {
+        flex: 0 0 auto;
+        padding: 0;
+        margin: 0;
+        font-size: 16px;
+        line-height: 1;
+    }
+
+    #con1 .main_circle img {
+        display: block;
+        width: 62px;
+        height: 62px;
+        margin: 2px 0;
+        object-fit: contain;
+    }
+
+    #con1 .main_circle h5 {
+        padding: 0;
+        margin: 0;
+        font-size: 18px;
+        line-height: 1.3;
+        text-align: center;
+    }
+
+    #con1 .main_circle p {
+        width: 100%;
+        max-width: 245px;
+        margin: 0;
+        font-size: 13px;
+        line-height: 1.5;
+        text-align: center;
+        overflow-wrap: anywhere;
+    }
+
+    /* CON3는 한 줄 구조가 아닌 세로 구조로 중앙 정렬 */
+    #con3 .txt_boxes {
+        width: 100%;
+        padding-right: 12px;
+        padding-left: 12px;
+        box-sizing: border-box;
+    }
+
+    #con3 .txt_left,
+    #con3 .txt_right {
+        width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    #con3 .txt_right {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-right: auto;
+        margin-left: auto;
+        text-align: center;
+    }
+
+    #con3 .txt_right > p {
+        width: 100%;
+        max-width: 500px;
+        margin-right: auto;
+        margin-left: auto;
+        text-align: center;
+    }
+
+    #con3 .vision_boxes {
+        width: 100%;
+        max-width: 400px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    #con3 .vision_box1 {
+        justify-content: center;
+        width: 100%;
+    }
+
+    /*
+      기존 motion-left / motion-right가 모바일에서 좌우로 32px 밀어
+      왼쪽 텍스트는 잘리고 오른쪽 비전은 치우쳐 보였음.
+      태블릿 이하에서는 좌우 이동 대신 아래에서 올라오도록 변경.
+    */
+    body.motion-ready #con3 .txt_left.motion-item,
+    body.motion-ready #con3 .txt_right.motion-item,
+    body.motion-ready #con3 .txt_left.motion-item.motion-left,
+    body.motion-ready #con3 .txt_right.motion-item.motion-right {
+        transform: translate3d(0, 28px, 0);
+    }
+
+    body.motion-ready #con3 .txt_left.motion-item.is-visible,
+    body.motion-ready #con3 .txt_right.motion-item.is-visible,
+    body.motion-ready #con3 .txt_left.motion-item.motion-left.is-visible,
+    body.motion-ready #con3 .txt_right.motion-item.motion-right.is-visible {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+/* ---------------------------------------------------------
+   MOBILE
+   텍스트 좌우 여백 + 비전 정확한 중앙 배치
+--------------------------------------------------------- */
+@media (max-width: 768px) {
+    .con1 {
+        padding-right: 24px !important;
+        padding-left: 24px !important;
+    }
+
+    #con3 .txt_boxes {
+        gap: 52px;
+        padding-right: 4px;
+        padding-left: 4px;
+    }
+
+    #con3 .txt_left {
+        padding-right: 4px;
+        padding-left: 4px;
+    }
+
+    #con3 .txt_left .t1 {
+        width: 100%;
+        margin-right: auto;
+        margin-left: auto;
+        line-height: 1.7;
+        overflow-wrap: anywhere;
+    }
+
+    #con3 .txt_top > span,
+    #con3 .txt_bottom > span {
+        display: block;
+        width: 100%;
+    }
+
+    /* 화살표까지 포함해 화면 밖으로 나가지 않게 */
+    #con3 .line {
+        width: calc(100% - 14px);
+        margin-right: 14px;
+        margin-left: 0;
+    }
+
+    #con3 .txt_right {
+        padding: 0;
+    }
+
+    #con3 .txt_right > p {
+        max-width: 330px;
+        margin-right: auto;
+        margin-bottom: 44px;
+        margin-left: auto;
+        font-size: 19px;
+        line-height: 1.75;
+    }
+
+    #con3 .vision_boxes {
+        max-width: 330px;
+        transform: none;
+    }
+
+    #con3 .vision_boxes > span {
+        width: 100%;
+        text-align: center;
+    }
+
+    #con3 .vision_box1 {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    #con3 .v1,
+    #con3 .v2 {
+        flex: 0 0 min(43vw, 150px);
+        width: min(43vw, 150px);
+    }
+
+    /* 모바일에서는 원을 한 줄에 하나씩 */
+    #con1 .circle_group {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    #con1 .dotted_circle {
+        flex-basis: auto;
+        width: min(86vw, 330px);
+    }
+}
+
+@media (max-width: 480px) {
+    .con1 {
+        padding-right: 20px !important;
+        padding-left: 20px !important;
+    }
+
+    #con3 .txt_boxes {
+        padding-right: 2px;
+        padding-left: 2px;
+    }
+
+    #con3 .txt_right > p {
+        max-width: 300px;
+        font-size: 18px;
+    }
+
+    #con3 .vision_boxes {
+        max-width: 310px;
+    }
+
+    #con3 .v1,
+    #con3 .v2 {
+        flex-basis: 145px;
+        width: 145px;
+    }
+
+    #con1 .dotted_circle {
+        width: min(88vw, 295px);
+        padding: 7px;
+    }
+
+    #con1 .main_circle {
+        padding: 24px 18px;
+        gap: 8px;
+    }
+
+    #con1 .main_circle img {
+        width: 56px;
+        height: 56px;
+    }
+
+    #con1 .main_circle p {
+        max-width: 215px;
+        font-size: 13px;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE FIX V4
+   CON3 좌우 밀림 최종 수정
+   motion-ready 클래스는 body가 아니라 html에 적용됨
+========================================================= */
+
+@media (max-width: 900px) {
+    /*
+      기존 모바일 모션:
+      .motion-left  = -32px
+      .motion-right = +32px
+
+      태블릿·모바일에서는 좌우 이동을 제거하고
+      중앙 위치에서 아래→위 모션만 사용합니다.
+    */
+    .motion-ready #con3 .txt_left.motion-item.motion-left,
+    .motion-ready #con3 .txt_right.motion-item.motion-right {
+        left: auto;
+        right: auto;
+        translate: none;
+        transform: translate3d(0, 28px, 0) !important;
+    }
+
+    .motion-ready #con3 .txt_left.motion-item.motion-left.is-visible,
+    .motion-ready #con3 .txt_right.motion-item.motion-right.is-visible {
+        transform: translate3d(0, 0, 0) !important;
+    }
+
+    /* 두 영역 모두 부모 폭 안에 정확하게 수납 */
+    #con3 .txt_left,
+    #con3 .txt_right {
+        position: relative;
+        left: 0;
+        right: auto;
+        width: 100%;
+        max-width: 100%;
+        margin-right: auto;
+        margin-left: auto;
+        box-sizing: border-box;
+    }
+
+    #con3 .txt_right {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    #con3 .txt_right > p,
+    #con3 .vision_boxes {
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    /* 왼쪽 텍스트가 화면 끝에 닿지 않도록 실제 내부 여백 확보 */
+    #con3 .txt_left {
+        padding-right: 8px;
+        padding-left: 8px;
+    }
+
+    #con3 .txt_top,
+    #con3 .txt_bottom {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    #con3 .txt_left .t1,
+    #con3 .txt_top > span,
+    #con3 .txt_bottom > span {
+        max-width: 100%;
+        overflow-wrap: anywhere;
+    }
+
+    /* 오른쪽 콘텐츠를 섹션 정중앙에 고정 */
+    #con3 .txt_right {
+        padding-right: 8px;
+        padding-left: 8px;
+    }
+
+    #con3 .txt_right > p {
+        width: min(100%, 320px);
+    }
+
+    #con3 .vision_boxes {
+        position: relative;
+        left: 0;
+        width: min(100%, 310px);
+        max-width: 310px;
+        transform: none !important;
+    }
+
+    #con3 .vision_box1 {
+        width: 100%;
+        margin: 0 auto;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    #con3 .txt_left,
+    #con3 .txt_right {
+        padding-right: 6px;
+        padding-left: 6px;
+    }
+
+    #con3 .txt_right > p {
+        width: min(100%, 296px);
+    }
+
+    #con3 .vision_boxes {
+        width: min(100%, 296px);
+        max-width: 296px;
+    }
+
+    #con3 .v1,
+    #con3 .v2 {
+        flex: 0 0 143px;
+        width: 143px;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE FIX V5
+   901px ~ 1200px 태블릿 가로 화면 전용 보정
+========================================================= */
+
+@media (min-width: 901px) and (max-width: 1200px) {
+    /* 전체 콘텐츠가 화면 가장자리에 붙지 않게 */
+    #con1,
+    #con4 {
+        width: 100%;
+        padding-right: 32px;
+        padding-left: 32px;
+        box-sizing: border-box;
+    }
+
+    /* POINT 3개는 한 줄 유지 */
+    #con1 .circle_group {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        gap: 24px;
+        width: 100%;
+        max-width: 1080px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    /* 기존 400px 안팎의 원을 줄여 세 개가 안정적으로 들어가게 */
+    #con1 .dotted_circle {
+        flex: 0 1 330px;
+        width: min(28vw, 330px);
+        max-width: 330px;
+        height: auto;
+        aspect-ratio: 1 / 1;
+        padding: 7px;
+        box-sizing: border-box;
+    }
+
+    #con1 .main_circle {
+        width: 100%;
+        height: 100%;
+        padding: 26px 20px 24px;
+        gap: 8px;
+        box-sizing: border-box;
+    }
+
+    #con1 .main_circle span {
+        flex: 0 0 auto;
+        padding: 0;
+        margin: 0;
+        font-size: 16px;
+        line-height: 1;
+    }
+
+    #con1 .main_circle img {
+        display: block;
+        width: 58px;
+        height: 58px;
+        margin: 2px 0;
+        object-fit: contain;
+    }
+
+    #con1 .main_circle h5 {
+        padding: 0;
+        margin: 0;
+        font-size: 18px;
+        line-height: 1.25;
+        text-align: center;
+    }
+
+    #con1 .main_circle p {
+        width: 100%;
+        max-width: 238px;
+        margin: 0;
+        font-size: 13px;
+        line-height: 1.45;
+        text-align: center;
+        overflow-wrap: anywhere;
+    }
+
+    /* 이미지 카드 좌우 여백과 카드 사이 간격 */
+    #con4 .img_boxes {
+        display: flex;
+        justify-content: center;
+        gap: 24px;
+        width: 100%;
+        max-width: 1140px;
+        margin-right: auto;
+        margin-left: auto;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    #con4 .img_box1 {
+        flex: 1 1 0;
+        width: auto;
+        min-width: 0;
+        max-width: 370px;
+    }
+}
+
