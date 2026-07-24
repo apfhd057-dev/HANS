@@ -482,12 +482,10 @@ html, body {
 }
 
 #menu .slide_btn.prev::before {
-    left: 21px;
     transform: translateY(-50%) rotate(-45deg);
 }
 
 #menu .slide_btn.next::before {
-    right: 21px;
     transform: translateY(-50%) rotate(135deg);
 }
 
@@ -2326,3 +2324,21 @@ html, body {
     }
 }
 
+/* 화살표 아이콘을 동그라미 정중앙에 배치 */
+#menu .slide_btn::before {
+    top: 50%;
+    left: 50%;
+    right: auto;
+}
+
+#menu .slide_btn.prev::before {
+    left: 55%;
+    right: auto;
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+#menu .slide_btn.next::before {
+    left: 45%;
+    right: auto;
+    transform: translate(-50%, -50%) rotate(135deg);
+}
