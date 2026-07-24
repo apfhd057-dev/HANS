@@ -79,6 +79,7 @@ html, body {
     top: 48px;
     transform: translateX(-50%);
     width: 250px;
+    max-width: calc(100vw - 32px);
     padding: 28px 36px;
     background: #fff;
     border-radius: 20px 20px 0 20px;
@@ -185,20 +186,24 @@ html, body {
     height: 54px;
     border: none;
     border-radius: 50%;
-    background: rgba(0,0,0,0.1);
+    background: rgba(0, 0, 0, 0.1);
     z-index: 10;
     cursor: pointer;
-}
-#main .main_btn:hover{
-    background: rgba(0,0,0,0.7);
+    transition: background-color 0.25s ease, border-color 0.25s ease;
 }
 
+#main .main_btn:hover {
+    background: #34130C;
+    border-color: #34130C;
+}
+
+/* 1500px 전후 노트북에서도 화살표가 이미지 안쪽으로 과하게 들어오지 않도록 */
 #main .main_prev {
-    left: 260px;
+    left: clamp(40px, 4.5vw, 72px);
 }
 
 #main .main_next {
-    right: 260px;
+    right: clamp(40px, 4.5vw, 72px);
 }
 
 #main .main_btn::before {
@@ -209,6 +214,11 @@ html, body {
     height: 12px;
     border-top: 2px solid #fff;
     border-left: 2px solid #fff;
+    transition: border-color 0.25s ease;
+}
+
+#main .main_btn:hover::before {
+    border-color: #fff;
 }
 
 #main .main_prev::before {
@@ -1345,6 +1355,31 @@ html, body {
 /* =========================
    RESPONSIVE
 ========================= */
+@media (max-width: 1600px) {
+    /* 화면 양끝에 있는 서브메뉴가 브라우저 밖으로 잘리지 않도록 정렬 */
+    #nav > ul > li:first-child .sub_menu {
+        left: 0;
+        transform: none;
+    }
+
+    #nav > ul > li:first-child .sub_menu::before {
+        left: 24px;
+        transform: none;
+    }
+
+    #nav > ul > li:last-child .sub_menu {
+        left: auto;
+        right: 0;
+        transform: none;
+    }
+
+    #nav > ul > li:last-child .sub_menu::before {
+        left: auto;
+        right: 24px;
+        transform: none;
+    }
+
+}
 @media (max-width: 1440px) {
     #header .header_in,
     #brand_story .story_inner,
@@ -1380,6 +1415,7 @@ html, body {
     #menu .slide_item.active .cake_img img {
         width: 330px;
     }
+
 }
 
 @media (max-width: 1200px) {

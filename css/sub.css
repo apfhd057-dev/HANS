@@ -692,7 +692,31 @@ body {
         width: min(100%, 820px);
     }
 }
+@media (max-width: 1600px) {
+    /* 화면 양끝에 있는 서브메뉴가 브라우저 밖으로 잘리지 않도록 정렬 */
+    #nav > ul > li:first-child .sub_menu {
+        left: 0;
+        transform: none;
+    }
 
+    #nav > ul > li:first-child .sub_menu::before {
+        left: 24px;
+        transform: none;
+    }
+
+    #nav > ul > li:last-child .sub_menu {
+        left: auto;
+        right: 0;
+        transform: none;
+    }
+
+    #nav > ul > li:last-child .sub_menu::before {
+        left: auto;
+        right: 24px;
+        transform: none;
+    }
+
+}
 @media (max-width: 1440px) {
     #header .header_in,
     #footer .footer_inner {
